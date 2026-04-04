@@ -5,10 +5,14 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>ABQ Aeration | Professional Lawn Care in Albuquerque, NM</title>
 <meta name="description" content="ABQ Aeration provides professional lawn aeration, overseeding, fertilization, and dethatching services in the Albuquerque, New Mexico area.">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; script-src 'self' 'unsafe-inline'; connect-src https://formsubmit.co;">
+<meta http-equiv="X-Content-Type-Options" content="nosniff">
+<meta name="referrer" content="strict-origin-when-cross-origin">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
 :root {
   --green-dark: #2D5016;
   --green-mid: #4A7C23;
@@ -28,7 +32,9 @@
   --shadow-lg: 0 8px 32px rgba(0,0,0,0.12);
   --radius: 12px;
 }
+
 html { scroll-behavior: smooth; }
+
 body {
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
   color: var(--text-dark);
@@ -36,8 +42,12 @@ body {
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
 }
+
 h1, h2, h3, h4 { font-family: 'Playfair Display', serif; line-height: 1.2; }
+
 .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+
+/* ─── NAVBAR ─── */
 nav {
   position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
   background: rgba(255,253,247,0.92);
@@ -45,7 +55,896 @@ nav {
   border-bottom: 1px solid rgba(45,80,22,0.08);
   transition: box-shadow 0.3s;
 }
+nav.scrolled { box-shadow: var(--shadow-md); }
+.nav-inner {
+  max-width: 1200px; margin: 0 auto; padding: 0 24px;
+  display: flex; align-items: center; justify-content: space-between;
+  height: 72px;
+}
+.logo {
+  display: flex; align-items: center; gap: 10px;
+  text-decoration: none; color: var(--green-dark);
+}
+.logo-icon {
+  width: 42px; height: 42px; background: var(--green-dark);
+  border-radius: 50%; display: flex; align-items: center; justify-content: center;
+}
+.logo-icon svg { width: 22px; height: 22px; }
+.logo-text { font-family: 'Playfair Display', serif; font-size: 1.35rem; font-weight: 800; letter-spacing: -0.5px; }
+.logo-text span { color: var(--green-light); }
+
+.nav-links { display: flex; align-items: center; gap: 32px; list-style: none; }
+.nav-links a {
+  text-decoration: none; color: var(--text-mid); font-size: 0.92rem;
+  font-weight: 500; transition: color 0.2s; position: relative;
+}
+.nav-links a:hover { color: var(--green-dark); }
+.nav-links a::after {
+  content: ''; position: absolute; bottom: -4px; left: 0; width: 0;
+  height: 2px; background: var(--green-mid); transition: width 0.2s;
+}
+.nav-links a:hover::after { width: 100%; }
+
+.nav-cta {
+  background: var(--green-dark); color: var(--white) !important;
+  padding: 10px 24px; border-radius: 50px; font-weight: 600 !important;
+  transition: background 0.2s, transform 0.2s !important;
+}
+.nav-cta:hover { background: var(--green-mid); transform: translateY(-1px); }
+.nav-cta::after { display: none !important; }
+
+.mobile-toggle { display: none; background: none; border: none; cursor: pointer; padding: 8px; }
+.mobile-toggle span {
+  display: block; width: 24px; height: 2px; background: var(--text-dark);
+  margin: 5px 0; transition: all 0.3s; border-radius: 2px;
+}
+
+/* ─── HERO ─── */
+.hero {
+  padding: 160px 0 100px;
+  background: linear-gradient(160deg, var(--cream) 0%, var(--green-pale) 50%, var(--sand) 100%);
+  position: relative; overflow: hidden;
+}
+.hero::before {
+  content: ''; position: absolute; top: -200px; right: -200px;
+  width: 600px; height: 600px; border-radius: 50%;
+  background: radial-gradient(circle, rgba(74,124,35,0.08) 0%, transparent 70%);
+}
+.hero::after {
+  content: ''; position: absolute; bottom: -100px; left: -100px;
+  width: 400px; height: 400px; border-radius: 50%;
+  background: radial-gradient(circle, rgba(139,105,20,0.06) 0%, transparent 70%);
+}
+.hero .container { position: relative; z-index: 1; display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+
+.hero-content h1 {
+  font-size: 3.4rem; color: var(--green-dark); margin-bottom: 20px;
+  letter-spacing: -1px;
+}
+.hero-content h1 span { color: var(--brown-mid); display: block; font-size: 0.6em; font-family: 'Inter', sans-serif; font-weight: 600; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 8px; }
+.hero-content p { font-size: 1.15rem; color: var(--text-mid); margin-bottom: 32px; max-width: 500px; }
+.hero-buttons { display: flex; gap: 16px; flex-wrap: wrap; }
+.btn-primary {
+  background: var(--green-dark); color: var(--white); padding: 16px 36px;
+  border-radius: 50px; text-decoration: none; font-weight: 600; font-size: 1rem;
+  transition: all 0.3s; display: inline-flex; align-items: center; gap: 8px;
+  border: none; cursor: pointer;
+}
+.btn-primary:hover { background: var(--green-mid); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(45,80,22,0.3); }
+.btn-secondary {
+  background: transparent; color: var(--green-dark); padding: 16px 36px;
+  border-radius: 50px; text-decoration: none; font-weight: 600; font-size: 1rem;
+  border: 2px solid var(--green-dark); transition: all 0.3s; display: inline-flex; align-items: center; gap: 8px;
+}
+.btn-secondary:hover { background: var(--green-dark); color: var(--white); transform: translateY(-2px); }
+
+.hero-visual {
+  display: flex; justify-content: center; align-items: center;
+}
+.hero-image-card {
+  width: 100%; max-width: 480px; aspect-ratio: 4/3;
+  background: linear-gradient(135deg, var(--green-mid), var(--green-dark));
+  border-radius: 20px; position: relative; overflow: hidden;
+  box-shadow: var(--shadow-lg);
+}
+.hero-image-card::before {
+  content: ''; position: absolute; inset: 0;
+  background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+}
+.hero-image-inner {
+  position: absolute; inset: 0; display: flex; flex-direction: column;
+  align-items: center; justify-content: center; color: white; text-align: center; padding: 40px;
+}
+.hero-image-inner svg { width: 80px; height: 80px; margin-bottom: 20px; opacity: 0.9; }
+.hero-image-inner p { font-size: 1.1rem; font-weight: 500; opacity: 0.85; }
+
+.hero-badges {
+  display: flex; gap: 24px; margin-top: 36px;
+}
+.badge {
+  display: flex; align-items: center; gap: 8px;
+  font-size: 0.88rem; color: var(--text-mid); font-weight: 500;
+}
+.badge svg { width: 20px; height: 20px; color: var(--green-mid); flex-shrink: 0; }
+
+/* ─── TRUST BAR ─── */
+.trust-bar {
+  padding: 40px 0; background: var(--white); border-bottom: 1px solid rgba(0,0,0,0.04);
+}
+.trust-items {
+  display: flex; justify-content: center; align-items: center; gap: 48px; flex-wrap: wrap;
+}
+.trust-item { text-align: center; }
+.trust-item .number { font-family: 'Playfair Display', serif; font-size: 2rem; font-weight: 800; color: var(--green-dark); }
+.trust-item .label { font-size: 0.85rem; color: var(--text-light); font-weight: 500; margin-top: 4px; }
+
+/* ─── SECTIONS ─── */
+section { padding: 100px 0; }
+.section-header { text-align: center; max-width: 640px; margin: 0 auto 60px; }
+.section-header .overline {
+  font-size: 0.82rem; font-weight: 700; text-transform: uppercase;
+  letter-spacing: 3px; color: var(--green-mid); margin-bottom: 12px;
+}
+.section-header h2 { font-size: 2.6rem; color: var(--green-dark); margin-bottom: 16px; }
+.section-header p { font-size: 1.05rem; color: var(--text-mid); }
+
+/* ─── SERVICES ─── */
+.services { background: var(--sand-light); }
+.services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
+.service-card {
+  background: var(--white); border-radius: var(--radius); padding: 36px 28px;
+  border: 1px solid rgba(0,0,0,0.04); transition: all 0.3s; position: relative;
+  overflow: hidden;
+}
+.service-card::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+  background: linear-gradient(90deg, var(--green-mid), var(--green-light));
+  opacity: 0; transition: opacity 0.3s;
+}
+.service-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); }
+.service-card:hover::before { opacity: 1; }
+.service-icon {
+  width: 56px; height: 56px; border-radius: 14px;
+  background: var(--green-pale); display: flex; align-items: center; justify-content: center;
+  margin-bottom: 20px;
+}
+.service-icon svg { width: 28px; height: 28px; color: var(--green-dark); }
+.service-card h3 { font-size: 1.25rem; color: var(--green-dark); margin-bottom: 10px; font-family: 'Inter', sans-serif; font-weight: 700; }
+.service-card p { font-size: 0.95rem; color: var(--text-mid); line-height: 1.7; }
+
+/* ─── WHY US ─── */
+.why-us { background: var(--cream); }
+.why-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+.why-image {
+  background: linear-gradient(135deg, var(--green-pale), var(--sand));
+  border-radius: 20px; aspect-ratio: 1; display: flex; align-items: center;
+  justify-content: center; position: relative; overflow: hidden;
+}
+.why-image svg { width: 160px; height: 160px; color: var(--green-dark); opacity: 0.2; }
+.why-image::after {
+  content: 'Your Lawn, Our Passion'; position: absolute; font-family: 'Playfair Display', serif;
+  font-size: 1.8rem; color: var(--green-dark); text-align: center; padding: 40px;
+}
+.why-list { list-style: none; display: flex; flex-direction: column; gap: 24px; }
+.why-item { display: flex; gap: 16px; }
+.why-item-icon {
+  width: 48px; height: 48px; border-radius: 50%; flex-shrink: 0;
+  background: var(--green-dark); display: flex; align-items: center; justify-content: center;
+}
+.why-item-icon svg { width: 22px; height: 22px; color: var(--white); }
+.why-item h4 { font-size: 1.05rem; font-weight: 700; color: var(--text-dark); margin-bottom: 4px; font-family: 'Inter', sans-serif; }
+.why-item p { font-size: 0.93rem; color: var(--text-mid); }
+
+/* ─── PROCESS ─── */
+.process { background: var(--green-dark); color: var(--white); }
+.process .section-header .overline { color: var(--green-light); }
+.process .section-header h2 { color: var(--white); }
+.process .section-header p { color: rgba(255,255,255,0.7); }
+.process-steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 32px; }
+.step {
+  text-align: center; padding: 32px 20px; border-radius: var(--radius);
+  background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.08);
+  position: relative;
+}
+.step-number {
+  width: 48px; height: 48px; border-radius: 50%; margin: 0 auto 16px;
+  background: var(--green-light); color: var(--green-dark);
+  font-weight: 800; font-size: 1.2rem;
+  display: flex; align-items: center; justify-content: center;
+}
+.step h3 { font-size: 1.05rem; margin-bottom: 8px; font-family: 'Inter', sans-serif; font-weight: 700; }
+.step p { font-size: 0.88rem; color: rgba(255,255,255,0.65); line-height: 1.6; }
+
+/* ─── TESTIMONIALS ─── */
+.testimonials { background: var(--sand-light); }
+.testimonial-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
+.testimonial-card {
+  background: var(--white); border-radius: var(--radius); padding: 32px;
+  border: 1px solid rgba(0,0,0,0.04); position: relative;
+}
+.testimonial-stars { color: var(--brown-mid); font-size: 1.1rem; margin-bottom: 16px; letter-spacing: 2px; }
+.testimonial-card blockquote { font-size: 0.95rem; color: var(--text-mid); line-height: 1.7; margin-bottom: 20px; font-style: italic; }
+.testimonial-author { display: flex; align-items: center; gap: 12px; }
+.author-avatar {
+  width: 44px; height: 44px; border-radius: 50%; background: var(--green-pale);
+  display: flex; align-items: center; justify-content: center;
+  font-weight: 700; color: var(--green-dark); font-size: 1rem;
+}
+.author-info .name { font-weight: 600; font-size: 0.92rem; color: var(--text-dark); }
+.author-info .location { font-size: 0.82rem; color: var(--text-light); }
+
+/* ─── SERVICE AREA ─── */
+.service-area { background: var(--cream); }
+.area-content { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+.area-map {
+  background: var(--green-pale); border-radius: 20px; aspect-ratio: 4/3;
+  display: flex; align-items: center; justify-content: center;
+  position: relative; overflow: hidden;
+}
+.area-map svg { width: 120px; height: 120px; color: var(--green-dark); opacity: 0.3; }
+.area-map::after {
+  content: 'Serving Greater Albuquerque'; position: absolute;
+  font-family: 'Playfair Display', serif; font-size: 1.4rem;
+  color: var(--green-dark); text-align: center; padding: 20px;
+}
+.area-list { list-style: none; display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 20px; }
+.area-list li {
+  display: flex; align-items: center; gap: 8px; font-size: 0.95rem;
+  color: var(--text-mid); padding: 8px 0;
+}
+.area-list li svg { width: 18px; height: 18px; color: var(--green-mid); flex-shrink: 0; }
+
+/* ─── CTA ─── */
+.cta-section {
+  padding: 100px 0;
+  background: linear-gradient(135deg, var(--green-dark) 0%, #1a3a0a 100%);
+  text-align: center; color: var(--white); position: relative; overflow: hidden;
+}
+.cta-section::before {
+  content: ''; position: absolute; inset: 0;
+  background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+}
+.cta-section .container { position: relative; z-index: 1; }
+.cta-section h2 { font-size: 2.8rem; margin-bottom: 16px; }
+.cta-section p { font-size: 1.1rem; opacity: 0.8; margin-bottom: 36px; max-width: 540px; margin-left: auto; margin-right: auto; }
+.cta-section .btn-primary { background: var(--white); color: var(--green-dark); font-size: 1.1rem; padding: 18px 44px; }
+.cta-section .btn-primary:hover { background: var(--green-pale); box-shadow: 0 8px 32px rgba(255,255,255,0.2); }
+.cta-phone { margin-top: 20px; font-size: 1.3rem; font-weight: 700; }
+.cta-phone a { color: var(--green-light); text-decoration: none; }
+.cta-qr { margin-top: 32px; }
+.qr-image {
+  width: 160px; height: 160px; border-radius: 14px;
+  background: white; padding: 8px; box-shadow: 0 4px 20px rgba(0,0,0,0.25);
+  transition: transform 0.3s;
+}
+.qr-image:hover { transform: scale(1.05); }
+.qr-label { margin-top: 10px; font-size: 0.9rem; opacity: 0.7; font-weight: 500; }
+
+/* ─── CONTACT ─── */
+.contact { background: var(--sand-light); }
+.contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; }
+.contact-info h3 { font-size: 1.6rem; color: var(--green-dark); margin-bottom: 16px; }
+.contact-info > p { color: var(--text-mid); margin-bottom: 32px; }
+.contact-detail { display: flex; align-items: flex-start; gap: 14px; margin-bottom: 24px; }
+.contact-detail-icon {
+  width: 44px; height: 44px; border-radius: 12px; background: var(--green-pale);
+  display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+}
+.contact-detail-icon svg { width: 20px; height: 20px; color: var(--green-dark); }
+.contact-detail .label { font-size: 0.82rem; color: var(--text-light); font-weight: 600; text-transform: uppercase; letter-spacing: 1px; }
+.contact-detail .value { font-size: 1rem; color: var(--text-dark); font-weight: 500; margin-top: 2px; }
+.contact-detail .value a { color: var(--green-dark); text-decoration: none; }
+
+.contact-form {
+  background: var(--white); border-radius: var(--radius); padding: 40px;
+  box-shadow: var(--shadow-md); border: 1px solid rgba(0,0,0,0.04);
+}
+.form-group { margin-bottom: 20px; }
+.form-group label { display: block; font-size: 0.88rem; font-weight: 600; color: var(--text-dark); margin-bottom: 6px; }
+.form-group input, .form-group select, .form-group textarea {
+  width: 100%; padding: 14px 16px; border: 1.5px solid #ddd; border-radius: 10px;
+  font-size: 0.95rem; font-family: 'Inter', sans-serif; transition: border-color 0.2s;
+  background: var(--cream);
+}
+.form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+  outline: none; border-color: var(--green-mid); background: var(--white);
+}
+.form-group textarea { resize: vertical; min-height: 120px; }
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+
+/* ─── FOOTER ─── */
+footer {
+  background: #111; color: rgba(255,255,255,0.6); padding: 60px 0 30px;
+}
+.footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 40px; margin-bottom: 40px; }
+.footer-brand .logo-text { color: var(--white); font-size: 1.3rem; }
+.footer-brand .logo-text span { color: var(--green-light); }
+.footer-brand p { margin-top: 12px; font-size: 0.9rem; line-height: 1.7; max-width: 300px; }
+.footer-col h4 { color: var(--white); font-size: 0.92rem; font-weight: 700; margin-bottom: 16px; font-family: 'Inter', sans-serif; text-transform: uppercase; letter-spacing: 1px; }
+.footer-col ul { list-style: none; }
+.footer-col li { margin-bottom: 10px; }
+.footer-col a { color: rgba(255,255,255,0.6); text-decoration: none; font-size: 0.9rem; transition: color 0.2s; }
+.footer-col a:hover { color: var(--green-light); }
+.footer-bottom {
+  border-top: 1px solid rgba(255,255,255,0.08); padding-top: 24px;
+  display: flex; justify-content: space-between; align-items: center; font-size: 0.84rem;
+}
+.footer-bottom a { color: rgba(255,255,255,0.5); text-decoration: none; }
+
+/* ─── RESPONSIVE ─── */
+@media (max-width: 1024px) {
+  .hero .container { grid-template-columns: 1fr; text-align: center; }
+  .hero-content p { margin: 0 auto 32px; }
+  .hero-buttons { justify-content: center; }
+  .hero-badges { justify-content: center; }
+  .hero-visual { display: none; }
+  .services-grid { grid-template-columns: repeat(2, 1fr); }
+  .process-steps { grid-template-columns: repeat(2, 1fr); }
+  .testimonial-grid { grid-template-columns: repeat(2, 1fr); }
+  .why-grid, .area-content, .contact-grid { grid-template-columns: 1fr; }
+  .footer-grid { grid-template-columns: 1fr 1fr; }
+}
+
+@media (max-width: 640px) {
+  .nav-links { display: none; }
+  .nav-links.open {
+    display: flex; flex-direction: column; position: absolute;
+    top: 72px; left: 0; right: 0; background: var(--cream);
+    padding: 24px; gap: 20px; border-bottom: 1px solid rgba(0,0,0,0.08);
+    box-shadow: var(--shadow-md);
+  }
+  .mobile-toggle { display: block; }
+  .hero { padding: 120px 0 60px; }
+  .hero-content h1 { font-size: 2.2rem; }
+  section { padding: 60px 0; }
+  .section-header h2 { font-size: 2rem; }
+  .services-grid, .process-steps, .testimonial-grid { grid-template-columns: 1fr; }
+  .trust-items { gap: 24px; }
+  .area-list { grid-template-columns: 1fr; }
+  .form-row { grid-template-columns: 1fr; }
+  .footer-grid { grid-template-columns: 1fr; }
+  .footer-bottom { flex-direction: column; gap: 12px; text-align: center; }
+  .cta-section h2 { font-size: 2rem; }
+}
+
+/* ─── ANIMATIONS ─── */
+@keyframes fadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
+.fade-up { opacity: 0; transform: translateY(24px); transition: all 0.6s cubic-bezier(0.22, 1, 0.36, 1); }
+.fade-up.visible { opacity: 1; transform: translateY(0); }
 </style>
 </head>
-<body></body>
+<body>
+
+<!-- NAVBAR -->
+<nav id="navbar">
+  <div class="nav-inner">
+    <a href="#" class="logo">
+      <div class="logo-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M12 2L12 22M12 2C9 6 4 8 4 14a8 8 0 0016 0c0-6-5-8-8-12z"/></svg>
+      </div>
+      <div class="logo-text">ABQ<span>Aeration</span></div>
+    </a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#services">Services</a></li>
+      <li><a href="#why-us">Why Us</a></li>
+      <li><a href="#process">Process</a></li>
+      <li><a href="#testimonials">Reviews</a></li>
+      <li><a href="#service-area">Areas</a></li>
+      <li><a href="#contact" class="nav-cta">Free Quote</a></li>
+    </ul>
+    <button class="mobile-toggle" id="mobileToggle" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="container">
+    <div class="hero-content">
+      <h1>
+        <span>Albuquerque's Lawn Experts</span>
+        A Healthier Lawn Starts From the Ground Up
+      </h1>
+      <p>Professional aeration, overseeding, fertilization, and complete lawn care services tailored to New Mexico's unique desert climate. Let your lawn breathe and thrive.</p>
+      <div class="hero-buttons">
+        <a href="#contact" class="btn-primary">
+          Get Your Free Quote
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+        <a href="#services" class="btn-secondary">Our Services</a>
+      </div>
+      <div class="hero-badges">
+        <div class="badge">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          Licensed &amp; Insured
+        </div>
+        <div class="badge">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          5-Star Rated
+        </div>
+        <div class="badge">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+          Same-Week Service
+        </div>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="hero-image-card">
+        <div class="hero-image-inner">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2L12 22M12 2C9 6 4 8 4 14a8 8 0 0016 0c0-6-5-8-8-12z"/><path d="M8 18h8M6 22h12"/></svg>
+          <p>Transforming Albuquerque Lawns<br>One Yard at a Time</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TRUST BAR -->
+<div class="trust-bar">
+  <div class="container">
+    <div class="trust-items">
+      <div class="trust-item">
+        <div class="number">100+</div>
+        <div class="label">Lawns Serviced</div>
+      </div>
+      <div class="trust-item">
+        <div class="number">3+</div>
+        <div class="label">Years Experience</div>
+      </div>
+      <div class="trust-item">
+        <div class="number">4.9</div>
+        <div class="label">Google Rating</div>
+      </div>
+      <div class="trust-item">
+        <div class="number">100%</div>
+        <div class="label">Satisfaction Guarantee</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SERVICES -->
+<section class="services" id="services">
+  <div class="container">
+    <div class="section-header fade-up">
+      <div class="overline">What We Do</div>
+      <h2>Complete Lawn Care Services</h2>
+      <p>From core aeration to full lawn restoration, we have the expertise and equipment to keep your lawn lush and healthy in the high desert.</p>
+    </div>
+    <div class="services-grid">
+      <div class="service-card fade-up">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg>
+        </div>
+        <h3>Core Aeration</h3>
+        <p>Our signature service. We pull soil plugs to relieve compaction, improve airflow, and allow water and nutrients to reach deep into the root zone for a thicker, greener lawn.</p>
+      </div>
+      <div class="service-card fade-up">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L12 22M12 2C9 6 4 8 4 14a8 8 0 0016 0c0-6-5-8-8-12z"/></svg>
+        </div>
+        <h3>Overseeding</h3>
+        <p>Fill in thin or bare spots with premium grass seed varieties chosen specifically for Albuquerque's climate and soil conditions. Best paired with aeration for maximum germination.</p>
+      </div>
+      <div class="service-card fade-up">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22V2M2 12l10-10 10 10M7 17l5-5 5 5M9 22h6"/></svg>
+        </div>
+        <h3>Fertilization</h3>
+        <p>Custom fertilization programs formulated for New Mexico's alkaline soils. We time applications to your lawn's growth cycle for maximum uptake and lasting green results.</p>
+      </div>
+      <div class="service-card fade-up">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 20h16M4 20V10M20 20V10M8 20V14M12 20V12M16 20V16M2 10l10-8 10 8"/></svg>
+        </div>
+        <h3>Dethatching</h3>
+        <p>Remove the layer of dead grass and debris that suffocates your lawn. Our power dethatching equipment clears thatch buildup so your turf can breathe and absorb moisture.</p>
+      </div>
+      <div class="service-card fade-up">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22c-4.97 0-9-2.24-9-5v-4M21 13v4c0 2.76-4.03 5-9 5M3 8v5M21 8v5M3 8c0-2.76 4.03-5 9-5s9 2.24 9 5M3 8c0 2.76 4.03 5 9 5s9-2.24 9-5"/></svg>
+        </div>
+        <h3>Soil Amendment</h3>
+        <p>Correct pH imbalances and improve soil structure with targeted amendments. We test your soil and add the right organic materials to create the perfect growing environment.</p>
+      </div>
+      <div class="service-card fade-up">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 3v18"/></svg>
+        </div>
+        <h3>Lawn Renovation</h3>
+        <p>Complete lawn restoration combining aeration, dethatching, overseeding, and fertilization. The ultimate package for lawns that need a fresh start or a major boost.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY US -->
+<section class="why-us" id="why-us">
+  <div class="container">
+    <div class="section-header fade-up">
+      <div class="overline">Why ABQ Aeration</div>
+      <h2>Built for New Mexico Lawns</h2>
+      <p>We know Albuquerque's unique climate, soil, and water challenges better than anyone.</p>
+    </div>
+    <div class="why-grid">
+      <div class="why-image">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="0.5"><path d="M12 2L12 22M12 2C9 6 4 8 4 14a8 8 0 0016 0c0-6-5-8-8-12z"/></svg>
+      </div>
+      <ul class="why-list fade-up">
+        <li class="why-item">
+          <div class="why-item-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          </div>
+          <div>
+            <h4>Desert Climate Specialists</h4>
+            <p>We understand the challenges of high altitude, alkaline soil, and arid conditions. Our methods are calibrated for the Rio Grande Valley.</p>
+          </div>
+        </li>
+        <li class="why-item">
+          <div class="why-item-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><path d="M22 4L12 14.01l-3-3"/></svg>
+          </div>
+          <div>
+            <h4>Commercial-Grade Equipment</h4>
+            <p>We invest in professional-grade aerators and seeders that deliver consistent, deep results you can't get from rental machines.</p>
+          </div>
+        </li>
+        <li class="why-item">
+          <div class="why-item-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          </div>
+          <div>
+            <h4>Transparent, Honest Pricing</h4>
+            <p>No hidden fees, no surprises. We quote by the square foot and stand behind every price we give you.</p>
+          </div>
+        </li>
+        <li class="why-item">
+          <div class="why-item-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+          </div>
+          <div>
+            <h4>Fast Scheduling &amp; Communication</h4>
+            <p>Book online or call. We respond fast, show up on time, and always leave your property clean.</p>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section class="process" id="process">
+  <div class="container">
+    <div class="section-header fade-up">
+      <div class="overline">How It Works</div>
+      <h2>Simple, Straightforward Process</h2>
+      <p>From first call to finished lawn, we make it easy.</p>
+    </div>
+    <div class="process-steps">
+      <div class="step fade-up">
+        <div class="step-number">1</div>
+        <h3>Request a Quote</h3>
+        <p>Fill out our form or give us a call. Tell us about your lawn and what you're looking for.</p>
+      </div>
+      <div class="step fade-up">
+        <div class="step-number">2</div>
+        <h3>Lawn Assessment</h3>
+        <p>We evaluate your soil, grass type, and conditions to recommend the right service plan.</p>
+      </div>
+      <div class="step fade-up">
+        <div class="step-number">3</div>
+        <h3>Expert Service</h3>
+        <p>Our crew arrives on schedule with professional equipment and gets to work transforming your lawn.</p>
+      </div>
+      <div class="step fade-up">
+        <div class="step-number">4</div>
+        <h3>Enjoy the Results</h3>
+        <p>See your lawn come alive within weeks. We follow up to make sure you're thrilled with the outcome.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials" id="testimonials">
+  <div class="container">
+    <div class="section-header fade-up">
+      <div class="overline">Customer Reviews</div>
+      <h2>What Our Clients Say</h2>
+      <p>Don't just take our word for it. Here's what Albuquerque homeowners think.</p>
+    </div>
+    <div class="testimonial-grid">
+      <div class="testimonial-card fade-up">
+        <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <blockquote>"Our lawn has never looked this green. After years of struggling with patchy grass, one aeration and overseeding session made a huge difference. Highly recommend ABQ Aeration."</blockquote>
+        <div class="testimonial-author">
+          <div class="author-avatar">MR</div>
+          <div class="author-info">
+            <div class="name">Maria R.</div>
+            <div class="location">NE Heights, Albuquerque</div>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card fade-up">
+        <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <blockquote>"Professional, punctual, and fair pricing. They explained everything clearly and even gave us tips for watering in the high desert. Our backyard is a completely different place now."</blockquote>
+        <div class="testimonial-author">
+          <div class="author-avatar">JT</div>
+          <div class="author-info">
+            <div class="name">James T.</div>
+            <div class="location">Rio Rancho</div>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card fade-up">
+        <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <blockquote>"We had them do a full lawn renovation and the results blew us away. The crew was respectful, the work was thorough, and our neighbors keep asking what we did. Five stars all day."</blockquote>
+        <div class="testimonial-author">
+          <div class="author-avatar">SC</div>
+          <div class="author-info">
+            <div class="name">Sarah C.</div>
+            <div class="location">Corrales</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICE AREA -->
+<section class="service-area" id="service-area">
+  <div class="container">
+    <div class="section-header fade-up">
+      <div class="overline">Service Area</div>
+      <h2>Proudly Serving Greater ABQ</h2>
+      <p>We cover the entire Albuquerque metro area and surrounding communities.</p>
+    </div>
+    <div class="area-content">
+      <div class="area-map">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+      </div>
+      <div class="fade-up">
+        <h3 style="font-size:1.4rem; color:var(--green-dark); margin-bottom:8px;">Areas We Serve</h3>
+        <p style="color:var(--text-mid); margin-bottom:20px;">Reliable lawn care across the metro, from the Sandias to the West Mesa.</p>
+        <ul class="area-list">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><path d="M22 4L12 14.01l-3-3"/></svg> Albuquerque</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><path d="M22 4L12 14.01l-3-3"/></svg> NE Heights</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+  <div class="container">
+    <h2>Ready for a Greener Lawn?</h2>
+    <p>Schedule your free lawn assessment today and see the ABQ Aeration difference. No pressure, no commitment.</p>
+    <a href="#contact" class="btn-primary">
+      Schedule Free Assessment
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+    </a>
+    <div class="cta-phone">Or call us: <a href="tel:5056818405">(505) 681-8405</a></div>
+    <div class="cta-qr">
+      <a href="tel:5056818405">
+        <img src="data:image/png;base64,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" alt="Scan to call ABQ Aeration" class="qr-image">
+      </a>
+      <p class="qr-label">Scan to Call Us</p>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="container">
+    <div class="contact-grid">
+      <div class="contact-info fade-up">
+        <h3>Get in Touch</h3>
+        <p>Have a question or ready to schedule? Reach out and we'll get back to you within a few hours.</p>
+        <div class="contact-detail">
+          <div class="contact-detail-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
+          </div>
+          <div>
+            <div class="label">Phone</div>
+            <div class="value"><a href="tel:5056818405">(505) 681-8405</a></div>
+          </div>
+        </div>
+        <div class="contact-detail">
+          <div class="contact-detail-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><path d="M22 6l-10 7L2 6"/></svg>
+          </div>
+          <div>
+            <div class="label">Email</div>
+            <div class="value"><a href="mailto:info@abqaeration.com">info@abqaeration.com</a></div>
+          </div>
+        </div>
+        <div class="contact-detail">
+          <div class="contact-detail-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          </div>
+          <div>
+            <div class="label">Service Area</div>
+            <div class="value">Greater Albuquerque, NM</div>
+          </div>
+        </div>
+        <div class="contact-detail">
+          <div class="contact-detail-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+          </div>
+          <div>
+            <div class="label">Hours</div>
+            <div class="value">Mon-Sat: 7:00 AM - 6:00 PM</div>
+          </div>
+        </div>
+      </div>
+      <form class="contact-form fade-up" id="quoteForm" action="https://formsubmit.co/writchie019@gmail.com" method="POST" onsubmit="handleSubmit(event)">
+        <input type="hidden" name="_subject" value="New Quote Request — ABQ Aeration">
+        <input type="hidden" name="_captcha" value="true">
+        <input type="hidden" name="_template" value="table">
+        <input type="text" name="_honey" style="display:none">
+        <h3 style="font-size:1.4rem; color:var(--green-dark); margin-bottom:24px; font-family:'Playfair Display',serif;">Request a Free Quote</h3>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="fname">First Name</label>
+            <input type="text" id="fname" name="fname" placeholder="John" required maxlength="50" autocomplete="given-name">
+          </div>
+          <div class="form-group">
+            <label for="lname">Last Name</label>
+            <input type="text" id="lname" name="lname" placeholder="Smith" required maxlength="50" autocomplete="family-name">
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" placeholder="john@example.com" required maxlength="100" autocomplete="email">
+          </div>
+          <div class="form-group">
+            <label for="phone">Phone</label>
+            <input type="tel" id="phone" name="phone" placeholder="(505) 555-0000" maxlength="20" pattern="[\d\s\-\(\)\+]+" title="Phone number (digits, spaces, dashes, parentheses)" autocomplete="tel">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="service">Service Interested In</label>
+          <select id="service" name="service">
+            <option value="">Select a service...</option>
+            <option value="aeration">Core Aeration</option>
+            <option value="overseeding">Overseeding</option>
+            <option value="fertilization">Fertilization</option>
+            <option value="dethatching">Dethatching</option>
+            <option value="soil">Soil Amendment</option>
+            <option value="renovation">Full Lawn Renovation</option>
+            <option value="other">Other / Not Sure</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="message">Tell Us About Your Lawn</label>
+          <textarea id="message" name="message" placeholder="Lawn size, current condition, any specific concerns..." maxlength="2000"></textarea>
+        </div>
+        <button type="submit" class="btn-primary" style="width:100%; justify-content:center;">
+          Send Quote Request
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="logo-text">ABQ<span>Aeration</span></div>
+        <p>Professional lawn aeration and care services for the Albuquerque metro area. Licensed, insured, and committed to healthier lawns.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Services</h4>
+        <ul>
+          <li><a href="#services">Core Aeration</a></li>
+          <li><a href="#services">Overseeding</a></li>
+          <li><a href="#services">Fertilization</a></li>
+          <li><a href="#services">Dethatching</a></li>
+          <li><a href="#services">Lawn Renovation</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="#why-us">About Us</a></li>
+          <li><a href="#process">Our Process</a></li>
+          <li><a href="#testimonials">Reviews</a></li>
+          <li><a href="#service-area">Service Area</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="tel:5056818405">(505) 681-8405</a></li>
+          <li><a href="mailto:info@abqaeration.com">info@abqaeration.com</a></li>
+          <li><a href="#contact">Free Quote</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 ABQ Aeration. All rights reserved.</span>
+      <span>Albuquerque, New Mexico</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+// Navbar scroll effect
+const navbar = document.getElementById('navbar');
+window.addEventListener('scroll', () => {
+  navbar.classList.toggle('scrolled', window.scrollY > 20);
+});
+
+// Mobile menu toggle
+const mobileToggle = document.getElementById('mobileToggle');
+const navLinks = document.getElementById('navLinks');
+mobileToggle.addEventListener('click', () => {
+  navLinks.classList.toggle('open');
+});
+navLinks.querySelectorAll('a').forEach(link => {
+  link.addEventListener('click', () => navLinks.classList.remove('open'));
+});
+
+// Scroll animations
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+    }
+  });
+}, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+// Form handler — submits to Formspree, then shows confirmation
+function handleSubmit(e) {
+  e.preventDefault();
+  const form = e.target;
+  const btn = form.querySelector('button[type="submit"]');
+  const data = new FormData(form);
+
+  btn.disabled = true;
+  btn.innerHTML = 'Sending...';
+
+  fetch(form.action, {
+    method: 'POST',
+    body: data,
+    headers: { 'Accept': 'application/json' }
+  }).then(() => {
+    btn.innerHTML = '<span style="display:inline-flex;align-items:center;gap:8px;">Quote Request Sent! <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><path d="M22 4L12 14.01l-3-3"/></svg></span>';
+    btn.style.background = 'var(--green-light)';
+    setTimeout(() => {
+      btn.innerHTML = 'Send Quote Request <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>';
+      btn.style.background = '';
+      btn.disabled = false;
+      form.reset();
+    }, 3000);
+  }).catch(() => {
+    btn.innerHTML = 'Error — please call us instead';
+    btn.style.background = '#c0392b';
+    btn.disabled = false;
+  });
+}
+
+// Smooth scroll for anchor links (sanitized selector)
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener('click', function(e) {
+    e.preventDefault();
+    const href = this.getAttribute('href');
+    if (!/^#[\w-]+$/.test(href)) return; // only allow safe selectors
+    const target = document.getElementById(href.substring(1));
+    if (target) {
+      const offset = 80;
+      const top = target.getBoundingClientRect().top + window.pageYOffset - offset;
+      window.scrollTo({ top, behavior: 'smooth' });
+    }
+  });
+});
+</script>
+</body>
 </html>
